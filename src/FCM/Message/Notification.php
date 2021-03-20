@@ -14,12 +14,15 @@ class Notification implements JsonSerializable
         /**@var string The notification's title.*/
         $title,
         /**@var string The notification's body text.*/
-        $body;
+        $body,
+        /**@var string The notification's image.*/
+        $image;
 
-    function __construct($title='',$body='')
+    function __construct($title='',$body='',$image='')
     {
         $this->title = $title;
         $this->body = $body;
+        $this->image = $image;
     }
 
 
@@ -33,12 +36,19 @@ class Notification implements JsonSerializable
         return $this;
     }
 
+    function setImage($image){
+        $this->image = $image;
+        return $this;
+    }
+
+
 
     public function jsonSerialize()
     {
         return [
             'title' => $this->title,
             'body'  => $this->body,
+            'image'  => $this->image,
         ];
     }
 }
